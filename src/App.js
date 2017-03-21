@@ -8,7 +8,7 @@ import defaultPicture from './components/img/default.jpg'
 
 const Materialize = window.Materialize
 
-const APP_TITLE = 'Awesome App'
+const APP_TITLE = 'Star Wars description'
 //update document title (displayed in the opened browser tab)
 document.title = APP_TITLE
 
@@ -52,7 +52,7 @@ class App extends Component {
                             </div>
 
                             <button type="submit" className="waves-effect waves-light btn">
-                                Weather?
+                                Description
                             </button>
 
                         </form>
@@ -63,6 +63,7 @@ class App extends Component {
                         <div className="col s12 m6 offset-m3">
                             { this.displayWeatherInfo() }
                         </div>
+                        look in th console please :)
                     </div>
                 </div>
 
@@ -119,6 +120,18 @@ class App extends Component {
             console.log( 'Failed fetching data: ', error )
         }
 
+
+        var request = require('request-promise');
+        var options = {
+            url:'http://swapi.co/api/people/1/',
+            datatype: 'json',
+            type: 'GET'
+        }
+
+        request.get(options).then(function(body){
+            var json = JSON.parse(body);
+            var birth = json.birth_year;
+        });
     }
 
     //will fetch a picture with the name of the city fetched by the weather API
@@ -189,6 +202,7 @@ class App extends Component {
             }
     
         */
+        
 
         if ( weather ) {
 
